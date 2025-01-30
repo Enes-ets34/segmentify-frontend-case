@@ -5,7 +5,6 @@ const API_ENDPOINTS = {
   questions: `/src/data/questions.json`,
   products: `/src/data/products.json`,
 };
-console.log('API_ENDPOINTS', API_ENDPOINTS)
 class ApiService {
   static async fetchQuestions() {
     try {
@@ -16,7 +15,6 @@ class ApiService {
       }
       
       const data = await response.json();
-      console.log('Received questions data:', data);
 
       const questions = data.steps || (data[0] && data[0].steps);
 
@@ -37,7 +35,6 @@ class ApiService {
         q.answers
       ));
     } catch (error) {
-      console.error("Sorular yüklenirken hata detayı:", error);
       throw error;
     }
   }
@@ -51,7 +48,6 @@ class ApiService {
       }
 
       const data = await response.json();
-      console.log('Received products data:', data);
 
       if (!Array.isArray(data)) {
         throw new Error("Ürün verisi dizi formatında değil");
@@ -59,7 +55,6 @@ class ApiService {
 
       return data.map(p => new Product(p));
     } catch (error) {
-      console.error("Ürünler yüklenirken hata detayı:", error);
       throw error;
     }
   }

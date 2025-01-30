@@ -52,10 +52,8 @@ function bindEventListeners() {
     
     if (isLoading) return;
     
-    // Seçim yapılmamışsa işlemi engelle
     const selectedElement = $(".answer-option.selected, .color-option.selected");
     if (selectedElement.length === 0) {
-        console.warn('Seçim yapılmadan ilerleme denemesi');
         $("#next-btn").prop("disabled", true);
         return;
     }
@@ -77,9 +75,7 @@ function bindEventListeners() {
     
     if (isLoading) return;
     
-    // İlk adımdaysa geri gitmeyi engelle
     if (currentStep === 0) {
-        console.warn('İlk adımda geri gitme denemesi');
         $("#back-btn").prop("disabled", true);
         return;
     }
@@ -94,7 +90,6 @@ function bindEventListeners() {
 
     const selectedValue = $(this).data("value");
     if (!selectedValue) {
-        console.warn('Geçersiz seçim denemesi');
         return;
     }
 
@@ -129,7 +124,6 @@ async function loadData() {
     createInitialStructure();
     initializeQuiz();
   } catch (error) {
-    console.error("Veri yüklenirken hata oluştu:", error);
     hideLoading();
     $("#app").html(`
       <div class="container">
@@ -149,7 +143,6 @@ function initializeQuiz() {
 
 function showQuestion(step) {
   if (!questions[step]) {
-    console.error("Soru bulunamadı:", step);
     return;
   }
 
@@ -166,7 +159,6 @@ function showQuestion(step) {
     .map((answer) => {
       const isSelected = userAnswers[step] === answer;
 
-      // Renk sorusu için özel görünüm
       if (currentQuestion.type === QuestionType.COLOR) {
         return `
                   <div class="color-option ${isSelected ? "selected" : ""}" 
@@ -183,7 +175,6 @@ function showQuestion(step) {
               `;
       }
 
-      // Diğer sorular için normal görünüm
       return `
               <div class="answer-option btn-primary ${
                 isSelected ? "selected" : ""
@@ -197,7 +188,6 @@ function showQuestion(step) {
 
   $("#answers-container").html(answersHtml);
 
-  // Renk seçenekleri için border rengini ayarla
   if (currentQuestion.type === QuestionType.COLOR) {
     $(".color-option.selected").each(function () {
       const selectedColor = $(this).data("value");
