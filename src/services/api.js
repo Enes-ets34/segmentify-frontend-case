@@ -1,9 +1,13 @@
 import Question from "../models/Question.js";
 import Product from "../models/Product.js";
 
+const BASE_URL = window.location.hostname === '127.0.0.1' 
+  ? 'http://127.0.0.1:5501' 
+  : '/segmentify-frontend-case';
+  
 const API_ENDPOINTS = {
-  questions: `/src/data/questions.json`,
-  products: `/src/data/products.json`,
+  questions: `${BASE_URL}/src/data/questions.json`,
+  products: `${BASE_URL}/src/data/products.json`,
 };
 console.log('API_ENDPOINTS', API_ENDPOINTS)
 class ApiService {
