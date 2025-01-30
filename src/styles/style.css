@@ -53,6 +53,12 @@
   justify-content: flex-start;
 }
 
+#answers-container.price-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
 #answers-container[style*="flex-direction: column"] .answer-option {
   width: 100%;
 }
@@ -142,7 +148,11 @@
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.05em;
-  margin: 0 auto;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
 }
 
 .products-container {

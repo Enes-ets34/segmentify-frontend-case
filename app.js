@@ -150,10 +150,15 @@ function showQuestion(step) {
   $("#question-title").text(currentQuestion.title);
   $("#question-subtitle").text(currentQuestion.subtitle || "");
 
-  $("#answers-container").css(
-    "flex-direction",
-    currentQuestion.type === QuestionType.CATEGORY ? "column" : "row"
-  );
+  if (currentQuestion.type === QuestionType.PRICE) {
+    $("#answers-container").addClass('price-grid');
+  } else {
+    $("#answers-container").removeClass('price-grid');
+    $("#answers-container").css(
+      "flex-direction",
+      currentQuestion.type === QuestionType.CATEGORY ? "column" : "row"
+    );
+  }
 
   const answersHtml = currentQuestion.answers
     .map((answer) => {
