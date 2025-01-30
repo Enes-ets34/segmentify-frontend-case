@@ -1,0 +1,17 @@
+:root {
+  --primary-color: #007bff;
+  --secondary-color: #e3f2fd;
+  --gray-color: #666;
+  --black-color: #000;
+  --border-color: #ddd;
+  --light-bg: #f5f5f5;
+  --disabled-color: #ccc;
+
+  --flex-display: flex;
+  --flex-direction-column: column;
+  --flex-direction-row: row;
+  --justify-space-between: space-between;
+  --justify-center: center;
+  --align-center: center;
+  --flex-gap: 1rem;
+} 
